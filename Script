@@ -29,9 +29,10 @@ local Section = MainTab:AddSection({
 	Name = "Test"
 })
 
-MainTab:AddButton({
-	Name = "2!",
-	Callback = function()
-      		print("button pressed1")
-  	end    
+MainTab:AddToggle({
+	Name = "This is a toggle!",
+	Default = false,
+	Callback = function(Value)
+		print(Value)
+	end    
 })
