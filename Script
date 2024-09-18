@@ -1,6 +1,27 @@
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
 local Window = OrionLib:MakeWindow({Name = "Bobol", IntroText = "Loading...", SaveConfig = true, ConfigFolder = "OrionTest"})
 
+--values
+_G.InfJump = true
+
+--fanction
+
+function InfJump()
+    local player = game.Players.LocalPlayer
+    local userInputService = game:GetService("UserInputService")
+
+    local canJump = true
+
+-- Function to enable infinite jumping
+    local function onJumpRequest()
+        if canJump then
+            player.Character:FindFirstChildOfClass("Humanoid"):ChangeState(Enum.HumanoidStateType.Jumping)
+        end
+    end
+
+-- Detect when the player presses the jump key
+    userInputService.JumpRequest:Connect(onJumpRequest)
+
 OrionLib:MakeNotification({
 	Name = "Script Executed",
 	Content = "You successfully executed",
@@ -18,9 +39,11 @@ local Section = MainTab:AddSection({
 	Name = "Main"
 })
 
-MainTab:AddButton({
-	Name = "Button!",
-	Callback = function()
-      		print("button pressed")
-  	end    
+MainTab:AddToggle({
+	Name = "Inf Jump",
+	Default = false,
+	Callback = function(Value)
+	    _G.InfJump == Value
+	    InfJump()
+	end    
 })
