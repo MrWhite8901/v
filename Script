@@ -29,71 +29,10 @@ local Section = MainTab:AddSection({
 	Name = "Test"
 })
 
-local s_rs = game:GetService("RunService")
-local l_plr = game:GetService("Players").LocalPlayer
-
-local l_humrp = l_plr.Character and l_plr.Character:FindFirstChild("HumanoidRootPart")
-local l_hum = l_plr.Character and l_plr.Character:FindFirstChild("Humanoid")
-
-local resp_con = l_plr.CharacterAdded:Connect(function(c) 
-    l_humrp = c:WaitForChild("HumanoidRootPart", 3)
-    l_hum = c:WaitForChild("Humanoid", 3)
-end)
-
-local function dnec(signal) 
-    local s = {}
-    for _, con in ipairs(getconnections(signal)) do 
-        local func = con.Function
-        if (func and islclosure(func)) then
-            if (not is_synapse_function(func)) then 
-                s[#s+1] = con
-                con:Disable() 
-            end
-        end
-    end
-    return s
-end
-
-local speed_amnt = 5 -- Default speed amount
-
--- AddToggle from your UI-less code
 MainTab:AddToggle({
-    Name = "speed",
-    Default = false,
-    Callback = function(Value)
-        if Value then
-            -- When speed hack is enabled
-            local a = dnec(l_humrp.Changed)
-            local b = dnec(l_humrp:GetPropertyChangedSignal("CFrame"))
-
-            s_rs:BindToRenderStep("speed", 2000, function(dt)
-                if l_humrp and l_hum then
-                    l_humrp.CFrame += l_hum.MoveDirection * dt * 5 * speed_amnt
-                end
-            end)
-        else
-            -- When speed hack is disabled
-            s_rs:UnbindFromRenderStep("speed")
-
-            for i, v in ipairs(a or {}) do 
-                v:Enable()
-            end
-            for i, v in ipairs(b or {}) do 
-                v:Enable()
-            end
-        end
-        print("Speed hack is " .. (Value and "enabled" or "disabled"))
-    end
-})
-
--- Optionally, you can add a way to change speed_amnt via another UI element
-MainTab:AddSlider({
-    Name = "Speed Amount",
-    Min = 1,
-    Max = 50,
-    Default = speed_amnt,
-    Callback = function(Value)
-        speed_amnt = Value
-        print("Speed amount set to:", Value)
-    end    
+	Name = "speed",
+	Default = false,
+	Callback = function(Value)
+		print(Value)
+	end    
 })
