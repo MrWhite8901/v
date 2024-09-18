@@ -43,3 +43,10 @@ Rayfield:Notify({
    },
 },
 })
+
+local Button = MainTab:CreateButton({
+   Name = "Button Example",
+   Callback = function()
+   print("Test2")
+   end,
+})
