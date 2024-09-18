@@ -26,4 +26,4 @@ local Window = Rayfield:CreateWindow({
    }
 })
 
-Window.Size = UDim2.new(0, 450, 0, 500)
+local Tab = Window:CreateTab("Tab Example", 4483362458) -- Title, Image
