@@ -45,8 +45,28 @@ Rayfield:Notify({
 })
 
 local Button = MainTab:CreateButton({
-   Name = "Button Example",
-   Callback = function()
-   print("Test2")
+   Name = "Fly",
+endallback = function()
+   -- This is a simple FlyScript that executes Lua code in Roblox
+
+-- Define the Lua code to be executed
+local luaCode = [[
+   -- Lua code to be executed
+   print("Hello, Roblox!")
+   print("This is being executed from a FlyScript.")
+]]
+
+-- Execute the Lua code
+local success, result = pcall(loadstring(luaCode))
+
+-- Check if the execution was successful
+if success then
+   print("Lua code executed successfully.")
+   if result ~= nil then
+       print("Result:", result)
+   end
+else
+   print("Error executing Lua code:", result)
+end
    end,
 })
