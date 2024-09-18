@@ -29,10 +29,64 @@ local Section = MainTab:AddSection({
 	Name = "Test"
 })
 
+local s_rs = game:GetService("RunService")
+local l_plr = game:GetService("Players").LocalPlayer
+
+local l_humrp = l_plr.Character and l_plr.Character:FindFirstChild("HumanoidRootPart")
+local l_hum = l_plr.Character and l_plr.Character:FindFirstChild("Humanoid")
+
+-- Ensure the character is loaded and track respawning
+local function updateCharacterReferences()
+    l_humrp = l_plr.Character:WaitForChild("HumanoidRootPart", 3)
+    l_hum = l_plr.Character:WaitForChild("Humanoid", 3)
+end
+
+l_plr.CharacterAdded:Connect(updateCharacterReferences)
+if l_plr.Character then
+    updateCharacterReferences()
+end
+
+-- Speed configuration
+local speedMultiplier = 2 -- Adjust this value for more or less speed
+
+-- Function to enable the speed hack
+local function enableSpeedHack()
+    s_rs:BindToRenderStep("SpeedHack", 2000, function(dt)
+        if l_humrp and l_hum then
+            -- Move the character faster in the direction they're moving
+            l_humrp.CFrame += l_hum.MoveDirection * dt * 16 * speedMultiplier
+        end
+    end)
+end
+
+-- Function to disable the speed hack
+local function disableSpeedHack()
+    s_rs:UnbindFromRenderStep("SpeedHack")
+end
+
+-- Adding the Toggle from MainTab
 MainTab:AddToggle({
-	Name = "speed",
-	Default = false,
-	Callback = function(Value)
-		print(Value)
-	end    
+    Name = "speed",
+    Default = false,
+    Callback = function(Value)
+        if Value then
+            enableSpeedHack()  -- Enable the speed hack if toggle is on
+            print("Speed hack enabled")
+        else
+            disableSpeedHack()  -- Disable the speed hack if toggle is off
+            print("Speed hack disabled")
+        end
+    end    
+})
+
+-- Optionally, you can add a slider for the speed multiplier
+MainTab:AddSlider({
+    Name = "Speed Amount",
+    Min = 1,
+    Max = 10,
+    Default = speedMultiplier,
+    Callback = function(Value)
+        speedMultiplier = Value
+        print("Speed multiplier set to:", Value)
+    end
 })
