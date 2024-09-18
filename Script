@@ -27,4 +27,19 @@ local Window = Rayfield:CreateWindow({
 })
 
 local MainTab = Window:CreateTab("🏠Home", nil) -- Title, Image
-local MainSection = Tab:CreateSection("Main")
+local MainSection = MainTab:CreateSection("Main")
+
+Rayfield:Notify({
+   Title = "Starting...",
+   Content = "You executed successfully",
+   Duration = 6.5,
+   Image = 4483362458,
+   Actions = { -- Notification Buttons
+      Ignore = {
+         Name = "Okay!",
+         Callback = function()
+         print("The user tapped Okay!")
+      end
+   },
+},
+})
