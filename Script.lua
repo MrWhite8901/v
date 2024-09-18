@@ -1,3 +1,2 @@
-local Window = Library.CreateLib("Testing", "DarkTheme")
-
-print("test")
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local Window = OrionLib:MakeWindow({Name = "Test", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
