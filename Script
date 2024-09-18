@@ -79,7 +79,6 @@ MainTab:AddToggle({
     end    
 })
 
--- Optionally, you can add a slider for the speed multiplier
 MainTab:AddSlider({
     Name = "Speed Amount",
     Min = 1,
