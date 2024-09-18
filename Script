@@ -47,10 +47,7 @@ Rayfield:Notify({
 local Button = MainTab:CreateButton({
    Name = "Fly",
 endallback = function()
-      -- This is a simple FlyScript that executes Lua code in Roblox
-
--- Define the Lua code to be executed
-local luaCode = [[
+       local luaCode = [[
     -- Lua code to be executed
     print("Hello, Roblox!")
     print("This is being executed from a FlyScript.")
