@@ -1,6 +1,4 @@
-local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
-
-Window.Size = UDim2.new(0, 450, 0, 500)
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))())
 
 local Window = Rayfield:CreateWindow({
    Name = "Test",
@@ -28,3 +26,4 @@ local Window = Rayfield:CreateWindow({
    }
 })
 
+Window.Size = UDim2.new(0, 450, 0, 500)
