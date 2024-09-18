@@ -1,5 +1,7 @@
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
+Window.Size = UDim2.new(0, 450, 0, 500)
+
 local Window = Rayfield:CreateWindow({
    Name = "Test",
    LoadingTitle = "Bobol",
@@ -25,3 +27,4 @@ local Window = Rayfield:CreateWindow({
       Key = {"https://pastebin.com/raw/PaHGX263"} -- List of keys that will be accepted by the system, can be RAW file links (pastebin, github etc) or simple strings ("hello","key22")
    }
 })
+
