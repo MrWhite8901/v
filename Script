@@ -24,3 +24,14 @@ MainTab:AddButton({
       		print("button pressed")
   	end    
 })
+
+local Section = MainTab:AddSection({
+	Name = "Test"
+})
+
+MainTab:AddButton({
+	Name = "2!",
+	Callback = function()
+      		print("button pressed1")
+  	end    
+})
