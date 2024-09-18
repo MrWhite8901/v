@@ -86,6 +86,6 @@ MainTab:AddSlider({
     Default = speedMultiplier,
     Callback = function(Value)
         speedMultiplier = Value
-        print("Speed multiplier set to:", Value)
+        print("Speed multiplier set to:"Value)
     end
 })
