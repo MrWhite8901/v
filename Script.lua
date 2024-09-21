@@ -15,7 +15,11 @@ local Section = MainTab:AddSection({
 MainTab:AddButton({
 	Name = "Button!",
 	Callback = function()
-      		print("button pressed")
-  	        print("button pressed second")
+	    local InfiniteJumpEnabled = true
+        game:GetService("UserInputService").JumpRequest:connect(function()
+	        if InfiniteJumpEnabled then
+		        game:GetService"Players".LocalPlayer.Character:FindFirstChildOfClass'Humanoid':ChangeState("Jumping")
+	        end
+        end)
 	end    
 })
