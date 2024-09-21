@@ -1,19 +1,13 @@
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
 local Window = OrionLib:MakeWindow({Name = "Bobol", IntroText = "Loading...", SaveConfig = true, ConfigFolder = "OrionTest"})
 
-OrionLib:MakeNotification({
-	Name = "Script Executed",
-	Content = "You successfully executed",
-	Image = "rbxassetid://4483345998",
-	Time = 5
-})
-
+--Main Tab
 local MainTab = Window:MakeTab({
 	Name = "Main",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
-
+--Main Section
 local Section = MainTab:AddSection({
 	Name = "Main"
 })
