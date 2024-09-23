@@ -45,7 +45,7 @@ Rayfield:Notify({
 })
 
 local Button = MainTab:CreateButton({
-   Name = "Button",
+   Name = "Destroy Ui",
    Callback = function()
    Rayfield:Destroy()
    end,
