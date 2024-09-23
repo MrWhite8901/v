@@ -11,6 +11,13 @@ local MainTab = Window:MakeTab({
 local Section = MainTab:AddSection({
 	Name = "Main"
 })
+--notify
+OrionLib:MakeNotification({
+	Name = "Title!",
+	Content = "Notification content... what will it say??",
+	Image = "rbxassetid://4483345998",
+	Time = 5
+})
 
 MainTab:AddButton({
 	Name = "Button!",
