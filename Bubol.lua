@@ -44,7 +44,7 @@ Rayfield:Notify({
 },
 })
 
-local Button = Tab:CreateButton({
+local Button = MainTab:CreateButton({
    Name = "Button",
    Callback = function()
    Rayfield:Destroy()
