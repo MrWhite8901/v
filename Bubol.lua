@@ -47,7 +47,7 @@ Rayfield:Notify({
 local Button = Tab:CreateButton({
    Name = "Button",
    Callback = function()
-   print("Button pressed")
+   Rayfield:Destroy()
    end,
 })
 
