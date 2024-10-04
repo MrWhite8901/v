@@ -53,31 +53,11 @@ local Button = MainTab:CreateButton({
    end,
 })
 
--- Creating the button
-local Players = game:GetService("Players")
-
--- Ensure we're in a local script, as LocalPlayer is client-side
-local player = Players.LocalPlayer
-
--- Creating the button
 local Button = MainTab:CreateButton({
-   Name = "Button Example",
+   Name = "Open Console",
    Callback = function()
-      -- The function that takes place when the button is pressed
-
-      -- Check if DefaultChatSystemChatEvents exists
-      local chatEvent = game.ReplicatedStorage:WaitForChild("DefaultChatSystemChatEvents", 5)
-      if chatEvent then
-         local sayMessageRequest = chatEvent:WaitForChild("SayMessageRequest", 5)
-         if sayMessageRequest then
-            -- Send message if everything is set up properly
-            sayMessageRequest:FireServer("Hello, button pressed!", "All")
-         else
-            warn("SayMessageRequest is missing.")
-         end
-      else
-         warn("DefaultChatSystemChatEvents is missing.")
-      end
+       -- This will open the developer console when the button is clicked
+       game:GetService("StarterGui"):SetCore("DevConsoleVisible", true)
    end,
 })
 
