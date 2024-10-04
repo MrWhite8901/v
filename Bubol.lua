@@ -26,28 +26,47 @@ local Window = Rayfield:CreateWindow({
    }
 })
 
-local MainTab = Window:CreateTab("Main", 4483362458) -- Title, Image
-local MainSection = MainTab:CreateSection("Section Example")
-
 Rayfield:Notify({
    Title = "You executed the script",
-   Content = "Very cool gui",
+   Content = nil,
    Duration = 5,
    Image = 13047715178,
    Actions = { -- Notification Buttons
       Ignore = {
-         Name = "Okay!",
+         Name = "Nice!",
          Callback = function()
-         print("The user tapped Okay!")
+         print("The user tapped Nice!")
       end
    },
 },
 })
 
+local MainTab = Window:CreateTab("Main", 4483362458) -- Title, Image
+local MainSection = MainTab:CreateSection("Section Example")
+
+local MainSection = MainTab:CreateSection("For Developers")
+
 local Button = MainTab:CreateButton({
    Name = "Destroy Ui",
    Callback = function()
    Rayfield:Destroy()
+   end,
+})
+
+local Button = MainTab:CreateButton({
+   Name = "Destroy Ui",
+   Callback = function()
+       local Players = game:GetService("Players")
+local player = Players.LocalPlayer
+
+wait(2) -- Wait 2 seconds before sending the message
+
+-- Function to send a message
+local function sendMessage(message)
+    game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
+end
+
+sendMessage("Test")
    end,
 })
 
