@@ -53,24 +53,31 @@ local Button = MainTab:CreateButton({
    end,
 })
 
+-- Creating the button
 local Players = game:GetService("Players")
 
+-- Ensure we're in a local script, as LocalPlayer is client-side
+local player = Players.LocalPlayer
+
 -- Creating the button
-local Button = MainTab:CreateButton({
+local Button = Tab:CreateButton({
    Name = "Button Example",
    Callback = function()
       -- The function that takes place when the button is pressed
 
-      -- Access the local player
-      local player = Players.LocalPlayer
-
-      -- Function to send a message
-      local function sendMessage(message)
-         game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
+      -- Check if DefaultChatSystemChatEvents exists
+      local chatEvent = game.ReplicatedStorage:WaitForChild("DefaultChatSystemChatEvents", 5)
+      if chatEvent then
+         local sayMessageRequest = chatEvent:WaitForChild("SayMessageRequest", 5)
+         if sayMessageRequest then
+            -- Send message if everything is set up properly
+            sayMessageRequest:FireServer("Hello, button pressed!", "All")
+         else
+            warn("SayMessageRequest is missing.")
+         end
+      else
+         warn("DefaultChatSystemChatEvents is missing.")
       end
-
-      -- Sending a chat message when the button is pressed
-      sendMessage("Hello, button pressed!")
    end,
 })
 
