@@ -57,16 +57,16 @@ local Button = MainTab:CreateButton({
    Name = "Test",
    Callback = function()
        local Players = game:GetService("Players")
-local player = Players.LocalPlayer
+       local player = Players.LocalPlayer
 
-wait(2) -- Wait 2 seconds before sending the message
+        wait(2) -- Wait 2 seconds before sending the message
 
--- Function to send a message
-local function sendMessage(message)
-    game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
-end
+        -- Function to send a message
+        local function sendMessage(message)
+            game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
+        end
 
-sendMessage("Test")
+        sendMessage("Test")
    end,
 })
 
