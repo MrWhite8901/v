@@ -60,7 +60,7 @@ local Players = game:GetService("Players")
 local player = Players.LocalPlayer
 
 -- Creating the button
-local Button = Tab:CreateButton({
+local Button = MainTab:CreateButton({
    Name = "Button Example",
    Callback = function()
       -- The function that takes place when the button is pressed
