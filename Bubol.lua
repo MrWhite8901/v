@@ -54,7 +54,7 @@ local Button = MainTab:CreateButton({
 })
 
 local Button = MainTab:CreateButton({
-   Name = "Destroy Ui",
+   Name = "Test",
    Callback = function()
        local Players = game:GetService("Players")
 local player = Players.LocalPlayer
